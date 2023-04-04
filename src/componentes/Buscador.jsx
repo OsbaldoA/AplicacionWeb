@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 class Buscador extends Component {
+
+  ////Se le agrego esto a la modificación
   state = {};
   render() {
     return (
