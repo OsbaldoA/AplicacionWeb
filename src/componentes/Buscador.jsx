@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 
 class Buscador extends Component {
+  
 
-  ///////modificacion extra de rama nueva
+  //se establecieron cambios
   state = {};
   render() {
     return (
