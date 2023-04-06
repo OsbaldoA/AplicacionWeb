@@ -5,6 +5,7 @@ import Resultado from "./componentes/Resultado";
 
 function App() {
 
+
   return (
     <div>
       <div className="max-w-xl mx-auto bg-slate-400">
@@ -13,7 +14,6 @@ function App() {
         </h1>
         <Buscador/>
       </div>
-      <Resultado/>
     </div>
   );
 }

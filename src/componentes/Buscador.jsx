@@ -1,14 +1,25 @@
 import React, { useState } from "react";
+import Resultado from "./Resultado";
 
 function Buscador() {
-  const [entradaDatos, setEntradaDatos] = useState("");
-  const [imagenes, setImagenes] = useState("");
+  const [[entradaDatos], setEntradaDatos] = useState("");
+  const [imagenes, setImagenes] = useState([]);
+
+  // console.log(entradaDatos);
+  // console.log(imagenes);
 
   function buscadorDatos(e) {
     e.preventDefault();
+    //setEntradaDatos(e.target.value);
 
     consultarAPI();
+
+    //console.log(imagenes);
   }
+
+  // function palabraBusqueda (evento){
+  //   const valroObtenido = evento.target.name
+  // }
 
   function consultarAPI() {
     const cantidadDatosMostrados = 30;
@@ -22,8 +33,6 @@ function Buscador() {
     fetch(url)
       .then((respuesta) => respuesta.json())
       .then((resultado) => setImagenes(resultado.hits));
-      console.log(imagenes);
-    
   }
 
   return (
@@ -33,13 +42,13 @@ function Buscador() {
           <input
             onChange={(e) => setEntradaDatos(e.target.value)}
             type="text"
+            //value={imagenes}
             className="w-full h-10 px-4 outline-none"
             placeholder="Escribe aquí"
           />
         </div>
         <div>
           <button
-            //onChange={e => setEntradaDatos(e.target.value)}
             className="w-full h-10 bg-red-500 hover:bg-red-400 text-white"
             type="submit"
           >
@@ -47,6 +56,8 @@ function Buscador() {
           </button>
         </div>
       </div>
+      {/* pasalos datos de entradaDatos a resultado por medio de lectura */}
+      <Resultado imagenes={imagenes} /> 
     </form>
   );
 }
