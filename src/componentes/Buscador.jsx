@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Resultado from "./Resultado";
 
 function Buscador() {
-  const [[entradaDatos], setEntradaDatos] = useState("");
+  const [entradaDatos, setEntradaDatos] = useState("");
   const [imagenes, setImagenes] = useState([]);
 
   // console.log(entradaDatos);

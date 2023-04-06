@@ -1,17 +1,20 @@
-import React, { useState, createContext } from "react";
-
-export const context = createContext();
+import Imagen from "./Imagen";
 
 function Resultado({ imagenes }) {
 
   function mostrarImagenes() {
     if (imagenes.length === 0) return null;
     console.log(imagenes);
+
   }
 
-  return <>
-  {mostrarImagenes()}
-  </>;
+  return(
+    <div className="">
+        {mostrarImagenes()}
+        {imagenes.map(imagen => <Imagen key={imagen.id} imagenesLink={imagen}/>)}
+
+    </div>
+  )
 }
 
 export default Resultado;
