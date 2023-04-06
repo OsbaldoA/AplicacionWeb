@@ -1,15 +1,9 @@
-import { useState, useEffect, Component } from "react";
 import "./App.css";
 import Buscador from "./componentes/Buscador";
+import Resultado from "./componentes/Resultado";
+
 
 function App() {
-  
-
-  const [termino, setTermino] = useState("zdfhg");
-
-  useEffect(()=>{
-    setTermino("Hola");
-  },[]);
 
   return (
     <div>
@@ -17,9 +11,9 @@ function App() {
         <h1 className="p-8 h-20 text-center text-white">
           Buscador de imagenes
         </h1>
-        <Buscador
-        mensaje={termino}/>
+        <Buscador/>
       </div>
+      <Resultado/>
     </div>
   );
 }
