@@ -1,12 +1,20 @@
-import React, { useState } from "react";
-import Resultado from "./Resultado";
+import React, { useContext, useState } from "react";
+// import Resultado from "./Resultado";
+
+import {ContextoBuscador} from '../contexto/context'
+
+// export const ContextoBuscador = createContext();
 
 function Buscador() {
+
+  const {setImagenes} = useContext(ContextoBuscador);
+
   const [entradaDatos, setEntradaDatos] = useState("");
-  const [imagenes, setImagenes] = useState([]);
+  // const [imagenes, setImagenes] = useState([]);
 
   // console.log(entradaDatos);
   // console.log(imagenes);
+
 
   function buscadorDatos(e) {
     e.preventDefault();
@@ -17,12 +25,9 @@ function Buscador() {
     //console.log(imagenes);
   }
 
-  // function palabraBusqueda (evento){
-  //   const valroObtenido = evento.target.name
-  // }
 
   function consultarAPI() {
-    const cantidadDatosMostrados = 30;
+    const cantidadDatosMostrados = 35;
     const url =
       "https://pixabay.com/api/?key=35046049-de157df3fd0d21856ae898c3a&q=" +
       entradaDatos +
@@ -37,8 +42,8 @@ function Buscador() {
 
   return (
     <form onSubmit={buscadorDatos}>
-      <div className="px-10 pb-10 grid grid-row grid-cols-4 gap-4">
-        <div className="col-span-3">
+      <div className="px-10 pb-10 grid grid-row grid-cols-8 gap-4">
+        <div className="grid col-start-2 col-end-6">
           <input
             onChange={(e) => setEntradaDatos(e.target.value)}
             type="text"
@@ -47,9 +52,9 @@ function Buscador() {
             placeholder="Escribe aquí"
           />
         </div>
-        <div>
+        <div className="grid col-start-6 col-end-8">
           <button
-            className="w-full h-10 bg-red-500 hover:bg-red-400 text-white"
+            className="h-10 bg-red-500 hover:bg-red-400 text-white"
             type="submit"
           >
             Buscar
@@ -57,8 +62,12 @@ function Buscador() {
         </div>
       </div>
       {/* pasalos datos de entradaDatos a resultado por medio de lectura */}
-      <Resultado imagenes={imagenes} /> 
+      {/* <ContextoBuscador.Provider value={{imagenes}}>
+        {props.children}
+      </ContextoBuscador.Provider> */}
+      {/* <Resultado imagenes={imagenes} /> */}
     </form>
+  
   );
 }
 
