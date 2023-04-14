@@ -5,9 +5,19 @@ import Paginacion from "./Paginacion";
 
 function Resultado() {
   const { imagenes } = useContext(ContextoBuscador);
+  const { consultarAPI } = useContext(ContextoBuscador);
+  const { numeroPagina } = useContext(ContextoBuscador);
 
-  if (imagenes.length === 0) return null;
-  console.log(imagenes);
+  if (imagenes.length === 0) {
+    console.log("No hay imagenes");
+    
+    return null;
+  }  
+  
+  function Valoración()
+  {
+    consultarAPI();
+  }
 
   return (
     <div>
@@ -16,7 +26,9 @@ function Resultado() {
           <Imagen key={imagen.id} imagenesLink={imagen} />
         ))}
       </div>
-      <Paginacion />
+      <div>
+        <Paginacion link2={Valoración}/>
+      </div>
     </div>
   );
 }

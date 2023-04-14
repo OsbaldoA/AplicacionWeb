@@ -1,5 +1,6 @@
 function Imagen({ imagenesLink }) {
   const { previewURL, tags, likes, views, largeImageURL } = imagenesLink;
+  
 
   return (
     <div className="w-48 h-64 bg-white">

@@ -2,14 +2,19 @@ import React, { useContext, useState } from "react";
 // import Resultado from "./Resultado";
 
 import {ContextoBuscador} from '../contexto/context'
+import Paginacion from "./Paginacion";
 
-// export const ContextoBuscador = createContext();
 
-function Buscador() {
 
-  const {setImagenes} = useContext(ContextoBuscador);
+export function Buscador() {
 
-  const [entradaDatos, setEntradaDatos] = useState("");
+  // const {setImagenes} = useContext(ContextoBuscador);
+  // const {numeroPagina} = useContext(ContextoBuscador);
+  const {setEntradaDatos} = useContext(ContextoBuscador);
+  const {consultarAPI} = useContext(ContextoBuscador);
+
+
+  // const [entradaDatos, setEntradaDatos] = useState("");
   // const [imagenes, setImagenes] = useState([]);
 
   // console.log(entradaDatos);
@@ -26,20 +31,25 @@ function Buscador() {
   }
 
 
-  function consultarAPI() {
-    const cantidadDatosMostrados = 35;
-    const url =
-      "https://pixabay.com/api/?key=35046049-de157df3fd0d21856ae898c3a&q=" +
-      entradaDatos +
-      "&per_page=" +
-      cantidadDatosMostrados;
-    //console.log(url);
+  // function consultarAPI() {
+  //   const cantidadDatosMostrados = 35;
+  //   const url =
+  //     "https://pixabay.com/api/?key=35046049-de157df3fd0d21856ae898c3a&q=" +
+  //     entradaDatos +
+  //     "&per_page=" +
+  //     cantidadDatosMostrados + "&page=" + numeroPagina;
+  //   //console.log(url);
 
-    fetch(url)
-      .then((respuesta) => respuesta.json())
-      .then((resultado) => setImagenes(resultado.hits));
+  //   fetch(url)
+  //     .then((respuesta) => respuesta.json())
+  //     .then((resultado) => setImagenes(resultado.hits));
+  // }
+
+  function AccederMetodo (){
+    console.log("dentro del metodo");
   }
 
+  
   return (
     <form onSubmit={buscadorDatos}>
       <div className="px-10 pb-10 grid grid-row grid-cols-8 gap-4">
@@ -60,7 +70,10 @@ function Buscador() {
             Buscar
           </button>
         </div>
+        {/* <ConsultaAPI linkAPI={consultarAPI} /> */}
       </div>
+      
+      {/* <ContextoAPI link={AccederMetodo}/> */}
       {/* pasalos datos de entradaDatos a resultado por medio de lectura */}
       {/* <ContextoBuscador.Provider value={{imagenes}}>
         {props.children}
